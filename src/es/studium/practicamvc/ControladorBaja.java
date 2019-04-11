@@ -18,13 +18,12 @@ public class ControladorBaja implements WindowListener, ActionListener{
 		vb.eliminar.addActionListener(this);
 		vb.cancelar.addActionListener(this);
 		vb.addWindowListener(this);
-		meterDatosChoice();
 		vb.setVisible(true);
-		
+		meterDatosChoice();	
 	}
 
 	private void meterDatosChoice() {
-		String sentencia="Select * from practicamvc.demandantes";
+		String sentencia="Select * from practicamvc.demandantes;";
 		mo.meterDatosdeDemandante(sentencia);		
 	}
 	

@@ -62,7 +62,7 @@ public class Modelo2 {
 	private void conectar() {
 		try {
 			Class.forName(driver);
-			connection = DriverManager.getConnection(url, login, password);	
+			connection = DriverManager.getConnection(url, login, password);
 		}catch(ClassNotFoundException cnfe) {
 			System.out.println("Error 1: "+cnfe.getMessage());
 		}

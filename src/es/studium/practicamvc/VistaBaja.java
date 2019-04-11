@@ -29,7 +29,7 @@ public class VistaBaja extends Frame{
 	Panel panelB = new Panel();
 	
 	VistaBaja(){
-		setTitle("Alta Asignacion");
+		setTitle("Baja Demandante");
 		setSize(300,300);
 		setLocationRelativeTo(null);
 		setLayout(new GridLayout(3,1));

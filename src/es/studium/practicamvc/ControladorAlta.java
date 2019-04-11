@@ -13,8 +13,6 @@ public class ControladorAlta implements WindowListener, ActionListener{
 	ControladorAlta(VistaAlta va1, Modelo1 ma1){
 		va=va1;
 		ma=ma1;
-		//Meter datos en choice ofertaC
-		//Meter datos en choice demandanteC
 		meterDatosChoice();
 		va.fechaT.setText(ma.actualFecha());
 		va.aceptar.addActionListener(this);
@@ -24,9 +22,9 @@ public class ControladorAlta implements WindowListener, ActionListener{
 	}
 
 	private void meterDatosChoice() {
-		String sentencia="Select * from practicamvc.ofertas";
+		String sentencia="Select * from practicamvc.ofertas;";
 		ma.meterDatosdeOfertanteC(sentencia);
-		sentencia="Select * from practicamvc.demandantes";
+		sentencia="Select * from practicamvc.demandantes;";
 		ma.meterDatosdeDemandante(sentencia);		
 	}
 
@@ -64,13 +62,11 @@ public class ControladorAlta implements WindowListener, ActionListener{
 	@Override
 	public void windowActivated(WindowEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void windowClosed(WindowEvent e) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

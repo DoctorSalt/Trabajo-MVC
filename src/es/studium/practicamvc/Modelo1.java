@@ -105,7 +105,7 @@ public class Modelo1{
 	}
 	public String fechaNormalizacion(String fechaOrigen) {
 		String[] fecha = fechaOrigen.split("-");
-		String fechaNuestra ="'"+fecha[2]+"-"+fecha[1]+"-"+fecha[0]+"'";
+		String fechaNuestra ="'"+fecha[2]+"/"+fecha[1]+"/"+fecha[0]+"'";
 		return fechaNuestra;
 	}
 

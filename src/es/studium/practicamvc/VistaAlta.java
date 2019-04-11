@@ -10,7 +10,7 @@ public class VistaAlta extends Frame{
 	TextField fechaT = new TextField("DD/MM/AAAA");
 	Label ofertaL = new Label("Oferta:");	
 	Choice ofertaC = new Choice();
-	Label demandanteL = new Label("Demandante");
+	Label demandanteL = new Label("Demandante:");
 	Choice demandanteC = new Choice();
 	Button aceptar = new Button("Aceptar");
 	Button cancelar = new Button("Cancelar");
