@@ -43,7 +43,7 @@ public class ControladorAlta implements WindowListener, ActionListener{
 					System.out.println("Seleccione una opcion en demandante");
 				}else {
 					String demandanteElegido = ma.Elegir(demandanteSeleccionado);
-					insertarDatos(fechaAmericana, ofertaSeleccionada, demandanteSeleccionado);
+					insertarDatos(fechaAmericana, ofertaElegida, demandanteElegido);
 				}
 			}
 			
@@ -54,7 +54,7 @@ public class ControladorAlta implements WindowListener, ActionListener{
 	}
 
 	private void insertarDatos(String fechaAmericana, String ofertaSeleccionada, String demandanteSeleccionado) {
-		String sentencia="INSERT into practicamvc.asignaciones values(null,'"+fechaAmericana+"',"+ofertaSeleccionada+","+demandanteSeleccionado+");";
+		String sentencia="INSERT into practicamvc.asignaciones values(null,"+fechaAmericana+","+ofertaSeleccionada+","+demandanteSeleccionado+");";
 		ma.insertarDatosDeAlta(sentencia);
 		System.out.println("Se dio de alta correctamente");
 	}

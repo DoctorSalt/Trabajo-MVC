@@ -84,8 +84,9 @@ public class Modelo2 {
 		conectar();
 		ejecutar(sentencia);
 		try {
-			rs.next();
+			while(rs.next()) {
 			nombre = rs.getString("nombre");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		

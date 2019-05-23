@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Vector;
 
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,14 +23,53 @@ public class TablaDeDatos {
 	static java.sql.Statement statement = null;
 	static ResultSet rs = null;	
 	
-	public static void main(String[] args) {
+	TablaDeDatos(){
 		conectar();
-		String sentencia="select * from practicamvc.ofertas;";
+		String sentencia="SELECT idOferta,\r\n" + 
+				"COUNT(idDemandanteFK) as 'NumeroDemandantes', \r\n" + 
+				" fechaFinOferta as 'Fecha Fin'\r\n" + 
+				"from practicamvc.ofertas, practicamvc.asignaciones \r\n" + 
+				"where idOfertaFK=idDemandanteFK\r\n" + 
+				"ORDER BY 1;";
 		ejecutar(sentencia);
-		desconectar();
+		desconectar();		
 	}
 	
 	
+	private static JTable ejecutar(String sentencia) {
+		int tamano=3;
+		try
+		{
+			String palabro="";
+			Vector columnNames=new Vector();
+			modelo.addColumn("Oferta");
+			columnNames.addElement("Oferta");				
+			modelo.addColumn("Numero de Demandantes");
+			columnNames.addElement("Numero de Demandantes");				
+			modelo.addColumn("Fecha Fin");
+			columnNames.addElement("Fecha Fin");				
+			modelo.setColumnIdentifiers(columnNames);
+			statement = connection.createStatement();
+			rs = statement.executeQuery(sentencia);
+			while(rs.next())
+			{
+				Object [] fila = new Object[tamano];
+				fila[0] = rs.getInt("idOferta");
+				fila[1] = rs.getString("NumeroDemandantes");
+				fila[2] = rs.getString("Fecha Fin");
+				modelo.addRow(fila);				
+			}
+			
+		}
+		catch (SQLException sqle)
+		{
+			System.out.println("Error de SQL: "+sqle.getMessage());
+		}
+		JTable tabla = new JTable(modelo);
+		return tabla;
+	}
+
+
 	private static void desconectar() {
 		try
 		{
@@ -43,6 +83,8 @@ public class TablaDeDatos {
 			System.out.println("Error 3: "+e.getMessage());
 		}				
 	}
+	
+	
 	/* EN PROCESO DE FRABICACION
 	private static void ejecutar(String sentencia) {
 		try {

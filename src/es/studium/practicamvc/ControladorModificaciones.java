@@ -36,6 +36,7 @@ public void actionPerformed(ActionEvent arg0) {
 		vis2.actualizar.addActionListener(this);
 		vis2.cancelar.addActionListener(this);
 		cargarDatos(numeroElegido);
+		vis2.setVisible(true);
 		}
 	}
 	if(vis.cancelar.equals(arg0.getSource())) {

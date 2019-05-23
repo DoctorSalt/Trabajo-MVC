@@ -35,12 +35,13 @@ public class ControladorBaja implements WindowListener, ActionListener{
 				System.out.println("Seleccione una opcion en demandante");
 			}else {
 				demandanteElegido = mo.Elegir(numeroSeleccionado);
-				String nombreElegido = mo.ElegirN(numeroSeleccionado);
+				String nombreElegido = mo.ElegirN(demandanteElegido);
 				vb.si.addActionListener(this);
 				vb.no.addActionListener(this);
 				vb.confirmarBaja.addWindowListener(this);
 				vb.setVisible(false);
 				vb.confirmarBajasC(nombreElegido);
+				vb.confirmarBaja.setVisible(true);
 			}
 		}
 		if(vb.cancelar.equals(e.getSource())) {

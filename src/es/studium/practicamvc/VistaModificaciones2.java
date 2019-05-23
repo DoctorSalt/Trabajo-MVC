@@ -42,5 +42,10 @@ public class VistaModificaciones2 extends Frame{
 		panel4.add(requisitosT);
 		panel5.add(actualizar);
 		panel5.add(cancelar);
+		add(panel1);
+		add(panel2);
+		add(panel3);
+		add(panel4);
+		add(panel5);
 	}
 }

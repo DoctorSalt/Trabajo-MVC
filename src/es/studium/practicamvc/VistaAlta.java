@@ -24,7 +24,7 @@ public class VistaAlta extends Frame{
 		setTitle("Alta Asignacion");
 		setSize(300,300);
 		setLocationRelativeTo(null);
-		setLayout(new GridLayout(4,1));
+		setLayout(new GridLayout(5,1));
 		panel1.add(fechaL);
 		panel1.add(fechaT);
 		ofertaC.addItem("Seleccione una oferta ...");
@@ -38,6 +38,7 @@ public class VistaAlta extends Frame{
 		add(panel1);
 		add(panel2);
 		add(panel3);
+		add(panel4);
 	}
 	
 }

@@ -39,12 +39,14 @@ public class Modelo3 {
 
 	public String RecogerNombre(String numeroElegido) {
 		// TODO Auto-generated method stub
-		String sentencia="";
+		String sentencia="SELECT idOferta FROM ofertas;";
 		conectar();
 		ejecutar(sentencia);
 		String nombre="";
 		try {
-			nombre = rs.getString("");
+			while(rs.next()) {
+			nombre = rs.getString("idOferta");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -103,7 +105,7 @@ public class Modelo3 {
 	}
 
 	public String[] datosRellena(String numero) {
-		String sentencia="select * from practicamvc.oferta where idOferta="+numero+";";
+		String sentencia="select * from practicamvc.ofertas where idOferta="+numero+";";
 		String[] datos= new String[3];
 		conectar();
 		ejecutar(sentencia);
