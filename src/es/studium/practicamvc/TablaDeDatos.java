@@ -5,16 +5,13 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
-
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class TablaDeDatos {
 	public VistaBaja vb;
-	
 	static DefaultTableModel modelo = new DefaultTableModel();
 	JTable tabla = new JTable(modelo);
-
 	static String driver = "com.mysql.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/practicamvc?autoReconnect=true&useSSL=false";
 	static String login = "root";
@@ -22,7 +19,6 @@ public class TablaDeDatos {
 	static Connection connection = null;
 	static java.sql.Statement statement = null;
 	static ResultSet rs = null;	
-	
 	TablaDeDatos(){
 		conectar();
 		String sentencia="SELECT idOferta,\r\n" + 
@@ -34,8 +30,6 @@ public class TablaDeDatos {
 		ejecutar(sentencia);
 		desconectar();		
 	}
-	
-	
 	private static JTable ejecutar(String sentencia) {
 		int tamano=3;
 		try
@@ -59,7 +53,6 @@ public class TablaDeDatos {
 				fila[2] = rs.getString("Fecha Fin");
 				modelo.addRow(fila);				
 			}
-			
 		}
 		catch (SQLException sqle)
 		{
@@ -68,8 +61,6 @@ public class TablaDeDatos {
 		JTable tabla = new JTable(modelo);
 		return tabla;
 	}
-
-
 	private static void desconectar() {
 		try
 		{
@@ -83,36 +74,6 @@ public class TablaDeDatos {
 			System.out.println("Error 3: "+e.getMessage());
 		}				
 	}
-	
-	
-	/* EN PROCESO DE FRABICACION
-	private static void ejecutar(String sentencia) {
-		try {
-			statement = connection.createStatement();
-			rs = statement.executeQuery(sentencia);
-			//creo columnas
-			modelo.addColumn("idOferta");
-			modelo.addColumn("Nº Demandantes Asignados");
-			modelo.addColumn("Fecha final");
-			// Bucle para cada resultado en la consulta
-			while (rs.next())
-			{
-			   // Se crea un array que será una de las filas de la tabla. 
-			   Object [] fila = new Object[3]; // Hay tres columnas en la tabla
-
-			   // Se rellena cada posición del array con una de las columnas de la tabla en base de datos.
-			   for (int i=0;i<3;i++)
-			      fila[i] = rs.getObject(i+1); // El primer indice en rs es el 1, no el cero, por eso se suma 1.
-			   // Se añade al modelo la fila completa.
-			   modelo.addRow(fila); 
-			}
-		}
-		catch(SQLException sqle) {
-			System.out.println("Error al ejecutar:");
-			System.out.println(sqle);
-		}				
-	}
-	*/
 	private static void conectar() {
 		try {
 			Class.forName(driver);
@@ -125,6 +86,5 @@ public class TablaDeDatos {
 			System.out.println("Error 2: "+sqle.getMessage());
 			System.out.println("Error C");
 		}	
-		
 	}
 }

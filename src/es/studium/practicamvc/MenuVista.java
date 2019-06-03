@@ -6,9 +6,6 @@ import java.awt.MenuBar;
 import java.awt.MenuItem;
 
 public class MenuVista extends Frame{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	MenuBar barramenu = new MenuBar();
 	MenuItem demandantesBaja = new MenuItem ("Bajas");
