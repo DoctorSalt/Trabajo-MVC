@@ -22,13 +22,20 @@ public class MenuControlador implements WindowListener, ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		if(arg0.getSource().equals(mv.demandantesBaja)) {
-			new PrincipalBajaDemandantes();
+			VistaBaja vb=new VistaBaja();
+			Modelo2 mo = new Modelo2(vb);
+			ControladorBaja cb = new ControladorBaja(vb,mo);  
 		}else if(arg0.getSource().equals(mv.modificacionOfertas)) {
-			new PrincipalModificacionOfertas();
+			VistaModificaciones vm=new VistaModificaciones();
+			Modelo3 mo = new Modelo3(vm);
+			ControladorModificaciones cm = new ControladorModificaciones(vm,mo);  
 		}else if(arg0.getSource().equals(mv.consultaOfertas)) {
-			new PrincipalConsultaOfertas();
+			VistaConsulta vc=new VistaConsulta();
+			ControladorConsulta ca=new ControladorConsulta(vc);
 		}else if(arg0.getSource().equals(mv.altaGestion)) {
-			new PrincipalAltaGestion();
+			VistaAlta va=new VistaAlta();
+			Modelo1 mo = new Modelo1(va);
+			ControladorAlta ca=new ControladorAlta(va,mo);
 		}
 		
 	}
