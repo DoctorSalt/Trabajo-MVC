@@ -22,7 +22,7 @@ public class VistaAlta extends Frame{
 	
 	VistaAlta(){
 		setTitle("Alta Asignacion");
-		setSize(300,300);
+		setSize(300,400);
 		setLocationRelativeTo(null);
 		setLayout(new GridLayout(5,1));
 		panel1.add(fechaL);

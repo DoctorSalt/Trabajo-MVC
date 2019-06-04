@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JOptionPane;
+
 public class ControladorModificaciones implements WindowListener, ActionListener{
 private VistaModificaciones vis;
 private VistaModificaciones2 vis2;
 private Modelo3 mo;
-
+private String numeroElegido;
 ControladorModificaciones(VistaModificaciones v1, Modelo3 m){
 	vis=v1;
 	mo=m;
@@ -26,9 +28,9 @@ public void actionPerformed(ActionEvent arg0) {
 	if(vis.editar.equals(arg0.getSource())) {
 		String elegido=vis.ofertaCM.getSelectedItem();
 		if(elegido.equals("Seleccione oferta ...")) {
-			System.out.println("Eliga alguna oferta");
+			JOptionPane.showMessageDialog (null, "Tiene que seleccionar una opcion en oferta", "Tiene que seleccionar", JOptionPane.INFORMATION_MESSAGE);
 		}else {
-		String numeroElegido=mo.Elegir(elegido);
+		numeroElegido=mo.Elegir(elegido);
 		String nombreElegido=mo.RecogerNombre(numeroElegido);
 		vis.setVisible(false);
 		vis2 = new VistaModificaciones2(nombreElegido);
@@ -42,14 +44,16 @@ public void actionPerformed(ActionEvent arg0) {
 	if(vis.cancelar.equals(arg0.getSource())) {
 		vis.setVisible(false);
 	}if(vis2.actualizar.equals(arg0.getSource())) {
+		String seleccion = numeroElegido;
 		String fecha =mo.americanizacionFecha(vis2.fecha1T.getText());
 		String fechaFin =mo.americanizacionFecha(vis2.fecha2T.getText());
 		String requisitos =vis2.requisitosT.getText();
+		mo.guardarDatos(fecha, fechaFin, requisitos, seleccion);
+		JOptionPane.showMessageDialog (null, "El dato ha sido modificado", "Modificado", JOptionPane.INFORMATION_MESSAGE);
 	}if(vis2.cancelar.equals(arg0.getSource())) {
 		vis2.setVisible(false);
 		vis.setVisible(true);
 	}
-	
 }
 private void cargarDatos(String numero) {
 	String [] datos=mo.datosRellena(numero);
@@ -73,7 +77,7 @@ public void windowClosed(WindowEvent arg0) {
 public void windowClosing(WindowEvent arg0) {
 	if(vis.isActive()) {
 		vis.setVisible(false);
-	}if(vis2.isActive()) {
+	}else if(vis2.isActive()) {
 		vis2.setVisible(false);
 	}	
 }

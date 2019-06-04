@@ -21,12 +21,12 @@ public class Modelo3 {
 	
 	public String americanizacionFecha(String fechaOrigen) {
 		String[] fecha = fechaOrigen.split("/");
-		String fechaAmericana ="'"+fecha[2]+"-"+fecha[1]+"-"+fecha[0]+"'";
+		String fechaAmericana =fecha[2]+"-"+fecha[1]+"-"+fecha[0];
 		return fechaAmericana;
 	}
 	public String fechaNormalizacion(String fechaOrigen) {
 		String[] fecha = fechaOrigen.split("-");
-		String fechaNuestra ="'"+fecha[2]+"/"+fecha[1]+"/"+fecha[0]+"'";
+		String fechaNuestra =fecha[2]+"/"+fecha[1]+"/"+fecha[0];
 		return fechaNuestra;
 	}
 	
@@ -139,4 +139,13 @@ public class Modelo3 {
 		}
 		desconectar();
 	}	
+	public void guardarDatos(String fecha, String fechaFin, String requisitos, String seleccion) {
+		String sentencia ="UPDATE ofertas SET fechaOferta = '"+fecha+"',"
+				+ "fechaFinOferta = '"+fechaFin+"',"
+				+ "requisitosOferta = '"+requisitos+"' "
+				+ "WHERE idOferta="+seleccion+";";
+		conectar();
+		ejecutar2(sentencia);
+		desconectar();
+	}
 }
