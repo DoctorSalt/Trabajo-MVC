@@ -28,6 +28,5 @@ public class VistaConsulta extends Frame{
 		panel2.add(aceptar);
 		add(panel1);
 		add(panel2);
-		setVisible(true);
 	}
 }

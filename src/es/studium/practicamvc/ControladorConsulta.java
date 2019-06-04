@@ -10,7 +10,9 @@ public class ControladorConsulta implements WindowListener, ActionListener{
 	VistaConsulta vc1; 
 	public ControladorConsulta(VistaConsulta vc) {
 		vc1=vc;
-		vc1.setVisible(true);		
+		vc1.setVisible(true);
+		vc1.aceptar.addActionListener(this);
+		vc1.addWindowListener(this);
 	}
 
 	@Override
@@ -30,7 +32,6 @@ public class ControladorConsulta implements WindowListener, ActionListener{
 		if(vc1.isActive()) {
 			vc1.setVisible(false);
 		}
-		
 	}
 
 	@Override
@@ -62,7 +63,5 @@ public class ControladorConsulta implements WindowListener, ActionListener{
 		if(vc1.aceptar.equals(e.getSource())) {
 			vc1.setVisible(false);
 		}
-		
 	}
-
 }

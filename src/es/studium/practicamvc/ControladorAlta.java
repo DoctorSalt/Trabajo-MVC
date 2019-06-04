@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.JOptionPane;
+
 public class ControladorAlta implements WindowListener, ActionListener{
 	
 	public VistaAlta va;
@@ -36,11 +38,11 @@ public class ControladorAlta implements WindowListener, ActionListener{
 			String ofertaSeleccionada = va.ofertaC.getSelectedItem();
 			String demandanteSeleccionado = va.demandanteC.getSelectedItem();
 			if(ofertaSeleccionada.equals("Seleccione una oferta ...")) {
-				System.out.println("Seleccione una opcion en oferta");
+				JOptionPane.showMessageDialog (null, "Tiene que seleccionar una opcion en oferta", "Tiene que seleccionar", JOptionPane.INFORMATION_MESSAGE);
 			}else {
 				String ofertaElegida = ma.Elegir(ofertaSeleccionada);
 				if(demandanteSeleccionado.equals("Seleccione un demandante ...")) {
-					System.out.println("Seleccione una opcion en demandante");
+					JOptionPane.showMessageDialog (null, "Tiene que seleccionar una opcion en oferta", "Tiene que seleccionar", JOptionPane.INFORMATION_MESSAGE);
 				}else {
 					String demandanteElegido = ma.Elegir(demandanteSeleccionado);
 					insertarDatos(fechaAmericana, ofertaElegida, demandanteElegido);
@@ -56,7 +58,8 @@ public class ControladorAlta implements WindowListener, ActionListener{
 	private void insertarDatos(String fechaAmericana, String ofertaSeleccionada, String demandanteSeleccionado) {
 		String sentencia="INSERT into practicamvc.asignaciones values(null,"+fechaAmericana+","+ofertaSeleccionada+","+demandanteSeleccionado+");";
 		ma.insertarDatosDeAlta(sentencia);
-		System.out.println("Se dio de alta correctamente");
+		JOptionPane.showMessageDialog (null, "La alta se produjo correctamente", "Alta Completada", JOptionPane.INFORMATION_MESSAGE);
+
 	}
 
 	@Override
